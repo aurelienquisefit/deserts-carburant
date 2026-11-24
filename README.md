@@ -21,7 +21,7 @@ L'analyse est descriptive : elle décrit des liaisons conditionnelles et n'étab
 ├── README.md                              le présent document
 ├── SOURCES.md                             sources, licences et citations
 ├── requirements.txt                       dépendances Python
-├── collecte/                              code de collecte, fourni à titre documentaire (non nécessaire au notebook)
+├── collecte/                              modules de la chaîne de collecte, fournis à titre documentaire (non nécessaires au notebook)
 ├── notebooks/
 │   ├── rapport_collectif_final.ipynb      analyse, graphes et conclusion
 │   └── fonctions.py                       téléchargement du flux officiel et des API Géo
@@ -54,7 +54,7 @@ automatiquement.
 Le notebook recherche le dossier `src/` au niveau supérieur de `notebooks/` : le dépôt doit donc être conservé dans cette
 structure.
 
-Le dossier `collecte/` décrit la chaîne de collecte et reprend ses modules ; le PDF qu'il contient en présente l'organisation.
+Le dossier `collecte/` contient les modules de collecte propres à la chaîne (flux, géocodage, contexte communal, collecte horaire) ; le PDF qu'il contient en présente l'enchaînement.
 
 ## 4. Installation
 
