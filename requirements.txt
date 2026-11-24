@@ -1,4 +1,4 @@
-# Dépendances pour exécuter notebooks/rapport_collectif_final.ipynb
+# Dépendances pour exécuter notebooks/rapport.ipynb
 numpy>=1.24
 pandas>=2.0
 pyarrow>=14

@@ -1,6 +1,6 @@
 # Les déserts de carburant en France
 
-Projet du cours « Python pour la data science » (ENSAE). Le notebook `notebooks/rapport_collectif_final.ipynb` répond à
+Projet du cours « Python pour la data science » (ENSAE). Le notebook `notebooks/rapport.ipynb` répond à
 deux questions :
 
 1. **Où se situent les déserts de carburant**, c'est-à-dire les communes éloignées de toute station, et combien
@@ -23,7 +23,7 @@ L'analyse est descriptive : elle décrit des liaisons conditionnelles et n'étab
 ├── requirements.txt                       dépendances Python
 ├── collecte/                              modules de la chaîne de collecte, fournis à titre documentaire (non nécessaires au notebook)
 ├── notebooks/
-│   ├── rapport_collectif_final.ipynb      analyse, graphes et conclusion
+│   ├── rapport.ipynb      analyse, graphes et conclusion
 │   └── fonctions.py                       téléchargement du flux officiel et des API Géo
 └── src/carburants/                        fonctions de calcul utilisées par le notebook
 ```
@@ -71,12 +71,12 @@ données du jour, et très peu des versions installées.
 
 ## 5. Exécution
 
-Avec Jupyter : ouvrir `notebooks/rapport_collectif_final.ipynb`, puis *Kernel → Restart & Run All*.
+Avec Jupyter : ouvrir `notebooks/rapport.ipynb`, puis *Kernel → Restart & Run All*.
 
 En ligne de commande :
 
 ```bash
-jupyter nbconvert --to notebook --execute --inplace notebooks/rapport_collectif_final.ipynb
+jupyter nbconvert --to notebook --execute --inplace notebooks/rapport.ipynb
 ```
 
 Le calcul dure quelques minutes, principalement à cause des téléchargements. Les graphes sont enregistrés dans
