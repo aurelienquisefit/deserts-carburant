@@ -18,7 +18,6 @@ Auteurs de la version d'origine : Aurélien Quisefit et François Ndoumbe.
 .
 ├── README.md                     ce fichier
 ├── requirements.txt              dépendances Python
-├── requirements-lock.txt         versions exactes utilisées pour la référence (facultatif)
 ├── collecte/                     code de collecte et son explication (voir collecte/Explication_des_fichiers_de_collecte.pdf)
 └── notebooks/
     ├── rapport_collectif_final.ipynb   le notebook : analyse, graphes et conclusion
@@ -67,7 +66,8 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Pour reproduire exactement les résultats de référence, installer plutôt `requirements-lock.txt`.
+Ces versions minimales suffisent : le notebook a été exécuté sans erreur dans un environnement neuf. Les chiffres
+dépendent surtout des données du jour, pas des versions des bibliothèques.
 
 ## 5. Lancer le notebook
 
