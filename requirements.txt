@@ -6,3 +6,5 @@ geopandas
 pynsee
 matplotlib
 s3fs
+scikit-learn
+seaborn
