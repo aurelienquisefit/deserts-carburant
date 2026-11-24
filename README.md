@@ -34,27 +34,22 @@ L'analyse est descriptive : elle décrit des liaisons conditionnelles et n'étab
 - Une connexion Internet : le notebook télécharge le flux officiel des prix et interroge l'API Géo.
 - Les données locales décrites à la section 3.
 
-## 3. Données locales
+## 3. Données
 
-Les trois fichiers suivants ne sont pas versionnés, pour des raisons de volume et de licence. Ils doivent être placés
-dans un dossier `data/` à la racine du dépôt :
+Le dépôt contient les trois fichiers dérivés nécessaires au notebook, dans `data/interim/` :
 
 ```
-data/
-├── raw/osm/overpass_grandes_surfaces_fr.json     grandes surfaces (OpenStreetMap)
-├── interim/osm_match.parquet                     enseignes des stations (OpenStreetMap)
-├── interim/communes.parquet                      revenu médian communal (INSEE, Filosofi 2023)
-└── snapshots/                                    captures horaires (facultatif)
+data/interim/
+├── osm_match.parquet               enseignes des stations (appariement OpenStreetMap)
+├── communes.parquet                communes : population, superficie, revenu médian (INSEE, Filosofi 2023)
+└── osm_grandes_surfaces.parquet    supermarchés et hypermarchés (OpenStreetMap, magasins bio exclus)
 ```
 
-Ces fichiers sont produits par le pipeline de traitement du projet, ou transmis par les auteurs. Le notebook vérifie leur
-présence au démarrage et s'arrête avec un message explicite si l'un d'eux manque. Le dossier `outputs/figures/` est créé
-automatiquement.
+Ces fichiers sont produits par la chaîne de collecte décrite dans `collecte/`. Le flux officiel des prix et les listes
+de communes sont téléchargés par le notebook lui-même. Le dossier `outputs/` est créé automatiquement.
 
-Le notebook recherche le dossier `src/` au niveau supérieur de `notebooks/` : le dépôt doit donc être conservé dans cette
-structure.
-
-Le dossier `collecte/` contient les modules de collecte propres à la chaîne (flux, géocodage, contexte communal, collecte horaire) ; le PDF qu'il contient en présente l'enchaînement.
+Le notebook vérifie la présence de ces trois fichiers au démarrage et s'arrête avec un message explicite s'il en manque un.
+Il recherche le dossier `src/` au niveau supérieur de `notebooks/` : le dépôt doit donc être conservé dans cette structure.
 
 ## 4. Installation
 
@@ -90,7 +85,7 @@ Le calcul dure quelques minutes, principalement à cause des téléchargements. 
 | Communes (population, superficie, centre) | API Géo | téléchargé à chaque exécution |
 | Noms des départements | API Géo | téléchargé à chaque exécution |
 | Enseignes des stations | OpenStreetMap | fichier local `data/interim/osm_match.parquet` |
-| Grandes surfaces | OpenStreetMap (`shop=supermarket`) | fichier local `data/raw/osm/` |
+| Grandes surfaces | OpenStreetMap (`shop=supermarket`) | fichier local `data/interim/osm_grandes_surfaces.parquet` |
 | Revenu médian communal | INSEE, Filosofi 2023 | fichier local `data/interim/communes.parquet` |
 
 Licences : Licence Ouverte 2.0 pour les données du ministère, de l'IGN et de l'INSEE ; ODbL pour OpenStreetMap. Détails et
@@ -132,7 +127,7 @@ obtenus à une autre date peuvent différer.
 
 | Message ou symptôme | Cause probable | Solution |
 |---|---|---|
-| `Caches absents` | un fichier de `data/` manque | vérifier la section 3 |
+| `Caches absents` | un fichier de `data/interim/` manque | vérifier la section 3 |
 | `ModuleNotFoundError: fonctions` | `fonctions.py` n'est pas dans le dossier du notebook | le placer dans `notebooks/` |
 | `ModuleNotFoundError: carburants` | `src/carburants/` introuvable | vérifier la structure de la section 3 |
 | `HTTPError: 502` ou `ConnectionError` | un service externe est temporairement indisponible | relancer le notebook |
