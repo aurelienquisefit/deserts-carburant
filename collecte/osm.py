@@ -4,9 +4,10 @@
 (nœuds, chemins et relations ; pour les deux derniers, ``out center`` fournit un
 point central). Étiquettes exploitées (wiki OSM, « Tag:amenity=fuel ») :
 ``brand``, ``brand:wikidata``, ``name``, ``operator``, ``opening_hours``,
-``self_service``, ``automated``, ``fuel:*``.
+``self_service``, ``automated``, ``fuel:*``. Les supermarchés (``shop=supermarket``,
+grandes surfaces) font l'objet d'une requête distincte (voir ``build_overpass_query``).
 
-**Politique d'usage d'Overpass** respectée : *une seule* requête par exécution,
+**Politique d'usage d'Overpass** respectée : *une* requête par type d'objet et par exécution,
 dont le résultat est mis en cache (``data/raw/osm``) ; ``User-Agent`` explicite ;
 ``timeout`` déclaré dans la requête ; pas de parallélisme. Relancer le pipeline
 réutilise le cache sauf ``--force``.
@@ -33,15 +34,20 @@ OSM_TAGS = ["brand", "brand:wikidata", "name", "operator", "opening_hours",
             "self_service", "automated"]
 
 
-def build_overpass_query(iso_code: str = "FR", timeout_s: int = 300) -> str:
-    """Requête Overpass QL des stations-service d'un pays (code ISO 3166-1)."""
+def build_overpass_query(iso_code: str = "FR", timeout_s: int = 300,
+                         cle: str = "amenity", valeur: str = "fuel") -> str:
+    """Requête Overpass QL des objets ``cle=valeur`` d'un pays (code ISO 3166-1).
+
+    Par défaut ``amenity=fuel`` (stations-service) ; ``shop=supermarket`` donne les
+    supermarchés et hypermarchés, seul tag OSM qui couvre les deux.
+    """
     return (
         f"[out:json][timeout:{int(timeout_s)}];\n"
         f'area["ISO3166-1"="{iso_code}"][admin_level=2]->.zone;\n'
         "(\n"
-        '  node["amenity"="fuel"](area.zone);\n'
-        '  way["amenity"="fuel"](area.zone);\n'
-        '  relation["amenity"="fuel"](area.zone);\n'
+        f'  node["{cle}"="{valeur}"](area.zone);\n'
+        f'  way["{cle}"="{valeur}"](area.zone);\n'
+        f'  relation["{cle}"="{valeur}"](area.zone);\n'
         ");\n"
         "out center tags;\n"
     )
