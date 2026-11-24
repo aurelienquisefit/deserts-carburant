@@ -3,7 +3,7 @@
 Principe : on **n'efface rien silencieusement**. Chaque règle ajoute une colonne
 booléenne (``coord_valide``, ``prix_valide``, ``prix_frais``...) et le
 ``QualityLog`` enregistre combien de lignes chaque filtre retire. Ces comptages,
-calculés sur les données réellement chargées, alimentent le rapport.
+calculés sur les données réellement chargées, documentent le nettoyage.
 """
 
 from __future__ import annotations

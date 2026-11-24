@@ -3,7 +3,7 @@
 Tous les paramètres « de recherche » (rayons, seuils de fraîcheur, bornes de prix)
 sont regroupés ici pour être cités dans le rapport et modifiés en un seul endroit.
 Aucun secret n'est stocké ici : les identifiants S3 / INSEE sont lus dans
-l'environnement (voir ``storage.py`` et ``insee.py``).
+l'environnement (voir ``storage.py``).
 """
 
 from __future__ import annotations

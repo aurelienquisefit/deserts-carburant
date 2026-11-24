@@ -9,8 +9,8 @@ grandes surfaces) font l'objet d'une requête distincte (voir ``build_overpass_q
 
 **Politique d'usage d'Overpass** respectée : *une* requête par type d'objet et par exécution,
 dont le résultat est mis en cache (``data/raw/osm``) ; ``User-Agent`` explicite ;
-``timeout`` déclaré dans la requête ; pas de parallélisme. Relancer le pipeline
-réutilise le cache sauf ``--force``.
+``timeout`` déclaré dans la requête ; pas de parallélisme. Les exécutions suivantes
+réutilisent le cache.
 
 **Licence** : données © contributeurs OpenStreetMap, ODbL. Toute table dérivée
 diffusée doit le mentionner (voir SOURCES.md).
