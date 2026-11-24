@@ -1,10 +1,25 @@
-pandas
-numpy
-requests
-pyarrow
-geopandas
-pynsee
-matplotlib
-s3fs
-scikit-learn
-seaborn
+# Dépendances d'exécution (versions minimales).
+# requirements-lock.txt fige les versions exactes utilisées pour la référence : à utiliser pour reproduire les résultats.
+numpy>=1.24
+pandas>=2.0
+pyarrow>=14
+requests>=2.31
+matplotlib>=3.7
+geopandas>=0.14
+shapely>=2.0
+pynsee>=0.3.0
+reportlab>=4.0
+
+# Notebook final (et notebook enrichi : scikit-learn pour BallTree, seaborn pour les graphiques)
+scikit-learn>=1.3
+seaborn>=0.13
+jupyter
+nbformat>=5.9
+nbconvert>=7.0
+ipykernel
+
+# Tests
+pytest>=7.4
+
+# Optionnel : stockage S3 (SSPCloud / MinIO). Décommenter si besoin.
+# s3fs>=2023.12
